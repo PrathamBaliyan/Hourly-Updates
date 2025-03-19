@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
+            }
+        }
+        stage('Indigo website Check') {
+            steps {
+                // Add your build steps here
+                sh 'python website.py'
+            }
+        }
+        
+    }
+}

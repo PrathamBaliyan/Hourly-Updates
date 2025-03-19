@@ -52,6 +52,12 @@ def book_flight():
 
             print(f"✅ Screenshot saved: {screenshot_path}")
 
+            # Step 11: Save Screenshot Path to a Local File
+            with open("screenshot_path.txt", "w") as file:
+                file.write(screenshot_path)
+            
+            print(f"✅ Screenshot path saved to 'screenshot_path.txt'")
+
             # Step 11: Close Browser
             browser.close()
 
