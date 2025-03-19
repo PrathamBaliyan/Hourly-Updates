@@ -1,18 +1,16 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
+        stage('Clone Repo') {
             steps {
                 git 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
             }
         }
-        stage('Indigo website Check') {
+        stage('Run Tests') {
             steps {
-                // Add your build steps here
-                sh 'python website.py'
+                sh 'echo "Running Tests..."'
+                sh 'pytest website.py'  // Modify based on your Playwright script
             }
         }
-        
     }
 }
