@@ -9,7 +9,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh 'echo "Running Tests..."'
-                sh 'python website.py'  // Modify based on your Playwright script
+                sh 'python3 website.py'  // Modify based on your Playwright script
             }
         }
     }
