@@ -1,23 +1,30 @@
 pipeline {
     agent any
+
     stages {
         stage('Clone Repo') {
             steps {
                 git branch: 'dev', url: 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
             }
         }
+
         stage('Setup Environment') {
             steps {
-                sh 'pip3 install --upgrade pip'
-                sh 'pip3 install pytest'
-                sh 'pip3 install playwright'  // ✅ Install Playwright
-                sh 'playwright install'       // ✅ Install required browsers
+                sh '''
+                    python3 -m venv venv    # Create a virtual environment
+                    source venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
+
         stage('Run Tests') {
             steps {
-                sh 'echo "Running Tests..."'
-                sh 'python3 website.py'  
+                sh '''
+                    source venv/bin/activate
+                    python website.py
+                '''
             }
         }
     }
