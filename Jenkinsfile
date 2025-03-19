@@ -11,13 +11,15 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 sh '''
-                    python3 -m venv venv    # Create a virtual environment
-                    source venv/bin/activate
+                    python3 -m venv venv
+                    . venv/bin/activate  # Use "." instead of "source"
                     pip install --upgrade pip
-                    pip install -r requirements.txt
+                    pip install -r requirements.txt || pip install playwright
+                    playwright install
                 '''
             }
         }
+
 
         stage('Run Tests') {
             steps {
