@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
+                git branch:'dev', url:'https://github.com/PrathamBaliyan/Hourly-Updates.git'
             }
         }
         stage('Run Tests') {
