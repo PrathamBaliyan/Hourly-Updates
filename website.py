@@ -16,9 +16,10 @@ def book_flight():
             page.goto("https://www.goindigo.in/", wait_until="load")
 
             # Step 2: Wait for "One Way" button and click
-            page.wait_for_selector('button[value="oneway"]', timeout=10000)  # Increased timeout
-            page.click('button[value="oneway"]')
-
+            #page.wait_for_selector('button[value="oneway"]', timeout=10000)  # Increased timeout
+            #page.click('button[value="oneway"]')
+            page.wait_for_selector('text="One Way"')  # Click based on text
+            page.click(('text="One Way"'), timeout=10000)
             # Step 3: Debugging Log
             print("✅ Clicked on 'One Way' button successfully.")
 
