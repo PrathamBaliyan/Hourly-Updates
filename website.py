@@ -18,18 +18,18 @@ def book_flight():
             # Step 2: Wait for "One Way" button and click
             #page.wait_for_selector('button[value="oneway"]', timeout=10000)  # Increased timeout
             #page.click('button[value="oneway"]')
-            page.wait_for_selector('text="One Way"')  # Click based on text
-            page.click(('text="One Way"'), timeout=10000)
+            #page.wait_for_selector('text="One Way"')  # Click based on text
+            #page.click(('text="One Way"'), timeout=10000)
             # Step 3: Debugging Log
-            print("✅ Clicked on 'One Way' button successfully.")
+            #print("✅ Clicked on 'One Way' button successfully.")
 
             # Proceed with the rest of the script...
 
-            browser.close()
+            #browser.close()
 
-        except Exception as e:
-            print(f"❌ Error: {e}")
-            browser.close()
+        #except Exception as e:
+            #print(f"❌ Error: {e}")
+            #browser.close()
 
 
             # Step 3: Enter From & To destinations
