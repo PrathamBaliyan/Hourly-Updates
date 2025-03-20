@@ -22,7 +22,7 @@ pipeline {
                 ls -l  # Debugging step to verify venv exists
                 
                 echo "Activating virtual environment..."
-                source $(pwd)/venv/bin/activate  # Use absolute path
+                . $(pwd)/venv/bin/activate  # Use absolute path
                 
                 echo "Upgrading pip..."
                 pip install --upgrade pip
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                source $(pwd)/venv/bin/activate
+                . $(pwd)/venv/bin/activate
                 
                 echo "Running Playwright script..."
                 python test.py
