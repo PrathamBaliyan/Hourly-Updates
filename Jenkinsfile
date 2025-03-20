@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 cleanWs() // Ensures the workspace is clean before pulling new code
-                git branch: 'main', url: 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
+                git branch: 'dev', url: 'https://github.com/PrathamBaliyan/Hourly-Updates.git'
             }
         }
         stage('Setup Playwright') {
@@ -16,12 +16,6 @@ pipeline {
                 '''
             }
         }
-        stage('Verify Files') {
-            steps {
-                sh 'ls -l'  // Debugging step to check if test.py is present
-            }
-        }
-
         stage('Run Playwright Script') {
             steps {
                 sh '''
