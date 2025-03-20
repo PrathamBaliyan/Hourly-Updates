@@ -2,16 +2,34 @@ from playwright.sync_api import sync_playwright
 
 def book_flight():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)  # Change to False to see browser
+        browser = p.chromium.launch(headless=False)  # Change to False to see browser
         context = browser.new_context()
         page = context.new_page()
 
         try:
             # Step 1: Open Indigo website
-            page.goto("https://www.goindigo.in/", wait_until="load")
+            #page.goto("https://www.goindigo.in/", wait_until="load")
 
             # Step 2: Select "One Way" trip
+            #page.click('button[value="oneway"]')
+            # Step 1: Open Indigo website
+            page.goto("https://www.goindigo.in/", wait_until="load")
+
+            # Step 2: Wait for "One Way" button and click
+            page.wait_for_selector('button[value="oneway"]', timeout=10000)  # Increased timeout
             page.click('button[value="oneway"]')
+
+            # Step 3: Debugging Log
+            print("✅ Clicked on 'One Way' button successfully.")
+
+            # Proceed with the rest of the script...
+
+            browser.close()
+
+        except Exception as e:
+            print(f"❌ Error: {e}")
+            browser.close()
+
 
             # Step 3: Enter From & To destinations
             page.fill('input[placeholder="From"]', "Delhi")
