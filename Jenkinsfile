@@ -29,12 +29,9 @@ pipeline {
                 
                 echo "Installing Playwright browsers..."
                 python -m playwright install
-                
-                echo "Checking if xvfb is installed..."
-                if ! command -v xvfb-run &> /dev/null; then
-                    echo "ERROR: xvfb is not installed. Please install it manually!"
-                    exit 1
-                fi
+
+                echo "Installing xvfb for UI support..."
+                sudo apt-get update && sudo apt-get install -y xvfb
                 '''
             }
         }
