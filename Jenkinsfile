@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                python test_playwright.py
+                python test.py
                 '''
             }
         }
