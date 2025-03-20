@@ -18,9 +18,6 @@ pipeline {
                 echo "Creating virtual environment..."
                 python3 -m venv venv  # Create virtual environment
                 
-                echo "Checking if venv exists..."
-                ls -l  # Debugging step to verify venv exists
-                
                 echo "Activating virtual environment..."
                 . $(pwd)/venv/bin/activate  # Use absolute path
                 
@@ -32,6 +29,9 @@ pipeline {
                 
                 echo "Installing Playwright browsers..."
                 python -m playwright install
+
+                echo "Installing xvfb for UI support..."
+                sudo apt-get update && sudo apt-get install -y xvfb
                 '''
             }
         }
@@ -57,8 +57,8 @@ pipeline {
                 echo "Activating virtual environment..."
                 . $(pwd)/venv/bin/activate
                 
-                echo "Running Playwright script..."
-                python website.py
+                echo "Running Playwright script with xvfb..."
+                xvfb-run --auto-servernum python website.py
                 '''
             }
         }
