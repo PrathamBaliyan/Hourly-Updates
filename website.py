@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 
 def book_flight():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Change to False to see browser
+        browser = p.chromium.launch(headless=True)  # Change to False to see browser
         context = browser.new_context()
         page = context.new_page()
 
