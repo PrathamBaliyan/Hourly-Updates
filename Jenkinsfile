@@ -11,7 +11,7 @@ pipeline {
         stage('Run Playwright Script') {
             steps {
                 sh '''
-                source venv/bin/activate
+                . venv/bin/activate
                 python test_playwright.py
                 '''
             }
