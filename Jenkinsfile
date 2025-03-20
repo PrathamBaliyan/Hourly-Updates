@@ -58,7 +58,7 @@ pipeline {
                 . $(pwd)/venv/bin/activate
                 
                 echo "Running Playwright script..."
-                python test.py
+                python indigo.py
                 '''
             }
         }
